@@ -29,3 +29,4 @@ Generating TypeScript Types
 #### References
 
 https://supabase.com/docs/reference/javascript/installing
+npx react-native run-android
