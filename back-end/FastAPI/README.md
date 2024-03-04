@@ -1,3 +1,9 @@
+> We decided not to move forward with FastAPI.
+>
+> This folder is for archive purposes only and might be deleted in the future.
+
+
+
 #### Back-End Technology Stack
 
 API Development

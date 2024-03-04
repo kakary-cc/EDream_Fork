@@ -1,6 +1,4 @@
 import OpenAI from "openai";
-import { readFileSync } from 'fs';
-import './config.mjs';
 import pdf from 'pdf-parse/lib/pdf-parse.js';
 
 const openai = new OpenAI({
@@ -24,26 +22,15 @@ function completionHandler(completion, taskName, debugMode = false) {
     }
 }
 
-async function main(debugMode = false) {
-    if (!process.argv[2]) {
-        console.log('No file specified! Quitting...');
-        return;
-    }
-    let fileData;
-    try {
-        fileData = readFileSync(process.argv[2]);
-    }
-    catch (err) {
-        console.log(debugMode ? err : 'Error reading file! Quitting...');
-        return;
-    }
+async function languageProcess(fileData, debugMode = false) {
     let pdfData;
     await pdf(fileData)
         .then((data) => {
             pdfData = data;
         })
         .catch((err) => {
-            console.log(debugMode ? err : 'Error parsing file! Quitting...');
+            console.log(debugMode ? err : '');
+            console.log('Error parsing file! Quitting...');
             return;
         });
     const promptTag = [
@@ -114,7 +101,7 @@ async function main(debugMode = false) {
         console.log('LLM returned unexpected category values! Quitting...');
         return;
     }
-    console.log(debugMode ? tags : '');
+    // console.log(debugMode ? tags : '');
     completion = await openai.chat.completions.create({
         messages: promptQuiz,
         model: "gpt-3.5-turbo"
@@ -128,14 +115,10 @@ async function main(debugMode = false) {
         console.log('LLM returned unexpected quiz values! Quitting...');
         return;
     }
-    console.log(debugMode ? quiz : '');
-    
+    // console.log(debugMode ? quiz : '');
+    return [tags, quiz];
 }
 
-if (process.env.DEBUG === '1') {
-    console.log('Debug mode is on!');
-    main(true);
-}
-else {
-    main();
-}
+export {
+    languageProcess
+};

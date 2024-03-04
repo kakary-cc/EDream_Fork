@@ -1,32 +1,41 @@
 #### Front-End Technology Stack
 
+---
+
 Framework
 
 > React Native
 
-----
+
 
 #### Development Tools
+
+---
 
 Simulator
 
 > qemu (Android Studio)
 
-----
+
 
 #### Common Commands
+
+---
 
 Install JavaScript Client Library
 `npm install @supabase/supabase-js`
 
 
 
-Generating TypeScript Types
-`supabase gen types typescript --project-id xxxxxx > database.types.ts`
+#### References
 
 ---
 
-#### References
-
 https://supabase.com/docs/reference/javascript/installing
-npx react-native run-android
+
+https://supabase.com/docs/guides/getting-started/quickstarts/reactjs
+
+> ^ Do note this is for React, not React Native.
+
+
+
