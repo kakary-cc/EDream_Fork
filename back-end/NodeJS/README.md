@@ -1,4 +1,4 @@
-Pre-process (Done on the back-end)
+#### Back-End | Learning Content Pre-Process
 
 ---
 
@@ -16,9 +16,7 @@ Create databse entry, with content title, tags & filename
 
 
 
-
-
-Front-end tasks
+#### Front-End | Learning Content Retrieval
 
 ---
 

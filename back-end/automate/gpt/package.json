@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "eslint": "^8.56.0",
-    "openai": "^4.28.0"
-  }
-}
