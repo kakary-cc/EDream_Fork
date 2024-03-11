@@ -26,20 +26,20 @@ async function main(debugMode = false) {
     if (!result) { // error occured when running `languageProcess`
         return;
     }
-    const [tags, quiz] = result;
+    const [tags, quiz, metadata] = result;
     console.log(debugMode ? tags : '');
     console.log(debugMode ? quiz : '');
+    console.log(debugMode ? metadata : '');
     const uuid = v4();
     const status = await supabase
-        .from('contents')
+        .from('Content')
         .insert({
             uuid: uuid,
-            title: 'learn how to do addition',
-            description: 'this is a video teaching you how to do addition',
-            size: 1024,
-            rating: 50,
-            // tags: tags,
-            tags: ['dummy'],
+            title: metadata.title,
+            description: metadata.description,
+            length: metadata.length,
+            rating: null,
+            quiz: JSON.stringify(quiz),
             uploaded: moment().utc().format("YYYY-MM-DD")
         });
     console.log(debugMode ? status : '');
@@ -48,8 +48,6 @@ async function main(debugMode = false) {
         return;
     }
     // TODO: Upload file to supabase storage
-    // TODO: Let gpt generate a title and description
-    // TODO: Return PDF size
 }
 
 if (process.env.DEBUG === '1') {
