@@ -24,6 +24,10 @@ Please feel free to add anything you found useful during the development process
 
 > See https://reactnative.dev/docs/environment-setup
 
+* How to connect Supabase API to React Native?
+
+> https://supabase.com/docs/guides/getting-started/tutorials/with-expo-react-native
+
 * How do I install all dependencies for the project?
 
 > You should see a file named `package.json` which contains a list of all dependencies under the project folder. Simply run `npm install` to install them.
@@ -31,3 +35,7 @@ Please feel free to add anything you found useful during the development process
 * How to run the project in an Android simulator?
 
 > Try `npm run android` or `npx react-native run-android` . Make sure you have the path of Android SDK added into your environment variables (see [here](https://developer.android.com/tools/variables)).
+
+* Execution failed for task ':react-native-async-storage_async-storage:compileDebugJavaWithJavac'
+
+> Latest RN (0.73.3) is using Gradle 8.3, which is not compatible with JDK 21. This is not related to Async Storage, but your setup - best to downgrade JDK, 17 is fine
