@@ -31,7 +31,7 @@ async function main(debugMode = false) {
     console.log(debugMode ? quiz : '');
     console.log(debugMode ? metadata : '');
     const uuid = v4();
-    const status = await supabase
+    const db_status = await supabase
         .from('Content')
         .insert({
             uuid: uuid,
@@ -42,12 +42,36 @@ async function main(debugMode = false) {
             quiz: JSON.stringify(quiz),
             uploaded: moment().utc().format("YYYY-MM-DD")
         });
-    console.log(debugMode ? status : '');
-    if (status.error) {
+    console.log(debugMode ? db_status : '');
+    if (db_status.error) {
         console.log('Error querying database! Quitting...');
         return;
     }
-    // TODO: Upload file to supabase storage
+    tags.forEach(async (tag) => {
+        const db_status = await supabase
+            .from('Content_Tags')
+            .insert({
+                content_uuid: uuid,
+                tag: tag
+            });
+        console.log(debugMode ? db_status : '');
+            if (db_status.error) {
+                console.log('Error querying database! Quitting...');
+                return;
+            }
+    });
+    const s3_status = await supabase
+        .storage
+        .from('content')
+        .upload('' + uuid + '.pdf', fileData, {
+            cacheControl: '3600',
+            upsert: false
+        });
+    if (s3_status.error) {
+        console.log('Error uploading file! Quitting...');
+        return;
+    }
+    console.log(debugMode ? s3_status.data : '');
 }
 
 if (process.env.DEBUG === '1') {

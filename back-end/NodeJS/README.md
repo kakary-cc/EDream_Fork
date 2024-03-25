@@ -2,15 +2,15 @@
 
 ---
 
-Preprocess pdf article into plaintext using `pdf-parse (npm package)`
+Preprocess pdf article into plaintext using `pdf-parse`
 
 Parse the article using OpenAI API, get content interest tags
 
-Generate quiz using API, store in a JSON file
+Generate quiz in a JSON format using API
 
-Upload file (.pdf ?) & quiz (.json) onto supabse storage bucket, record filename
+Create databse entry, with content title, tags, filename (uuid) and quiz json.
 
-Create databse entry, with content title, tags & filename
+Upload the file (.pdf) onto supabse storage bucket.
 
 
 
