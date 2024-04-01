@@ -1,42 +1,38 @@
-import 'react-native-url-polyfill/auto'
 import React, { Component, useState, useEffect } from 'react'
-import { supabase } from './api/supabase'
-import Auth from './components/Auth'
-import Account from './components/Account'
-import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
-import { Session } from '@supabase/supabase-js'
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import 'react-native-url-polyfill/auto'
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View
+} from 'react-native'
+import { Session } from '@supabase/supabase-js';
 
-// import React from 'react';
-// import { NavigationContainer } from '@react-navigation/native';
-// import AppNavigator from './src/navigation/appNavigation';
+import { supabase } from './api/supabase';
+import Auth from './components/Auth';
+import Account from './components/Account';
+import HomeScreen from './pages/Home';
+import ProfileScreen from './pages/Profile';
+import LoginForm from './pages/LoginForm';
 
+const Stack = createNativeStackNavigator();
 
-// const App = () => {
-//     return (
-//         <NavigationContainer>
-//             <appNavigation />
-//         </NavigationContainer>    
-//     );
-// };
-
-function App() {
-  const [session, setSession] = useState<Session | null>(null)
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-    })
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
-
+const AppNavigator = () => {
   return (
-    <View>
-      {session && session.user ? <Account key={session.user.id} session={session} /> : <Auth />}
-    </View>
-  )
-}
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={ HomeScreen }
+          options={{title: 'Welcome'}}
+        />
+        <Stack.Screen name="Profile" component={ ProfileScreen } />
+        <Stack.Screen name="Login" component={ LoginForm } />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
-export default App;
+export default AppNavigator;
