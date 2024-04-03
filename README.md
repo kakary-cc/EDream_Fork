@@ -32,7 +32,11 @@ Please feel free to add anything you found useful during the development process
 
 > You should see a file named `package.json` which contains a list of all dependencies under the project folder. Simply run `npm install` to install them.
 
-* How to run the project in an Android simulator?
+* How to run the project in Expo?
+
+> `npx expo start`
+
+* How to run the project in an Android simulator (Reactive Native CLI)?
 
 > Try `npm run android` or `npx react-native run-android` . Make sure you have the path of Android SDK added into your environment variables (see [here](https://developer.android.com/tools/variables)).
 
