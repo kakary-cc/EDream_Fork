@@ -12,6 +12,9 @@ import "react-native-url-polyfill/auto";
 import HomeScreen from "./pages/Home";
 import ProfileScreen from "./pages/Profile";
 import LoginForm from "./pages/LoginForm";
+import articleScroll from "./pages/articleScroll";
+import QuizScreen from "./pages/Quiz";
+import resultsScreen from "./pages/QuizResult"
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +29,8 @@ const AppNavigator = () => {
         />
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="Login" component={LoginForm} />
+        <Stack.Screen name="WikipediaArticle" component={WikipediaArticleScreen} options={{ title: 'Wikipedia Article' }} />
+        <Stack.Screen name="Quiz" component={QuizScreen} options={{ title: 'Quiz' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
