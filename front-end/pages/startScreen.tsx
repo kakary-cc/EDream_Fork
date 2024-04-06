@@ -38,7 +38,7 @@ const UserProfileScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.menuItem} onPress={() => handleNavigation('SettingsScreen')}>
           <Image
-            source={require('./front-end/Assets/settingGear')}
+            source={require('./front-end/Assets/settingGear ADD PNG LATER WITH FULL PUSH')}
             style={styles.menuIcon}
           />
         </TouchableOpacity>
