@@ -14,7 +14,8 @@ import ProfileScreen from "./pages/Profile";
 import LoginForm from "./pages/LoginForm";
 import articleScroll from "./pages/articleScroll";
 import QuizScreen from "./pages/Quiz";
-import resultsScreen from "./pages/QuizResult"
+import resultsScreen from "./pages/QuizResult";
+import UserProfileScreen from "./pages/startScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,7 @@ const AppNavigator = () => {
         <Stack.Screen name="Login" component={LoginForm} />
         <Stack.Screen name="WikipediaArticle" component={WikipediaArticleScreen} options={{ title: 'Wikipedia Article' }} />
         <Stack.Screen name="Quiz" component={QuizScreen} options={{ title: 'Quiz' }} />
+        <Stack.screen name="Landing Page" component={UserProfileScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
