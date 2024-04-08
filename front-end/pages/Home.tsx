@@ -20,6 +20,14 @@ const HomeScreen = ({ navigation }: any) => {
         title="Login Form"
         onPress={() => navigation.navigate("Login", {})}
       />
+      <Button
+        title="Quiz"
+        onPress={() => navigation.navigate("Quiz", {})}
+      />
+      <Button
+        title="Landing Page"
+        onPress={() => navigation.navigate("Landing Page", {})}
+      />
     </View>
   );
 };

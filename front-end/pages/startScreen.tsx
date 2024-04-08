@@ -1,11 +1,11 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React from "react";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const UserProfileScreen = () => {
   const navigation = useNavigation();
 
-  const handleNavigation = (screenName) => {
+  const handleNavigation = (screenName: string) => {
     navigation.navigate(screenName);
   };
 
@@ -13,7 +13,7 @@ const UserProfileScreen = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={require('SET TO PATH FOR USERS PROFILE PIC')}
+          source={require("../assets/avatar.png")}
           style={styles.avatar}
         />
         <Text style={styles.username}>REPLACE WITH USERS USERNAME</Text>
@@ -27,18 +27,30 @@ const UserProfileScreen = () => {
       </View>
 
       <View style={styles.bottomMenu}>
-        <TouchableOpacity style={styles.menuItem} onPress={() => handleNavigation('FriendsScreen')}>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => handleNavigation("FriendsScreen")}
+        >
           <Text>Friends</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem} onPress={() => handleNavigation('ProfileScreen')}>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => handleNavigation("ProfileScreen")}
+        >
           <Text>Profile</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem} onPress={() => handleNavigation('LearningPathwaysScreen')}>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => handleNavigation("LearningPathwaysScreen")}
+        >
           <Text>Learning Pathways</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem} onPress={() => handleNavigation('SettingsScreen')}>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => handleNavigation("SettingsScreen")}
+        >
           <Image
-            source={require('./front-end/Assets/settingGear ADD PNG LATER WITH FULL PUSH')}
+            source={require("../assets/settingGear.png")}
             style={styles.menuIcon}
           />
         </TouchableOpacity>
@@ -50,12 +62,12 @@ const UserProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     paddingHorizontal: 20,
     paddingTop: 40,
   },
   header: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 20,
   },
   avatar: {
@@ -66,17 +78,17 @@ const styles = StyleSheet.create({
   },
   username: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 5,
   },
   score: {
     fontSize: 18,
-    color: 'gray',
+    color: "gray",
   },
   interestsContainer: {
     padding: 20,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderRadius: 10,
     marginBottom: 20,
   },
@@ -84,15 +96,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   bottomMenu: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    backgroundColor: '#eee',
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: "#eee",
     paddingVertical: 10,
   },
   menuItem: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   menuIcon: {
     width: 30,
@@ -101,4 +113,3 @@ const styles = StyleSheet.create({
 });
 
 export default UserProfileScreen;
-

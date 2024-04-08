@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 
-const resultsScreen = ({ score, restartQuiz }) => {
+const QuizResult = ({ score, restartQuiz }) => {
     return (
         <view>
             <Text> Quiz Over!</Text>
@@ -10,4 +10,4 @@ const resultsScreen = ({ score, restartQuiz }) => {
     );
 };
 
-export default resultsScreen;
+export default QuizResult;

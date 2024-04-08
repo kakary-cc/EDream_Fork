@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, ScrollView, Text, Button, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const WikipediaArticleScreen = ({ articleContent }) => {
+const WikiArticleScreen = ({ articleContent }) => {
   const navigation = useNavigation();
   const scrollViewRef = useRef(null); // Create a ref for ScrollView
   const [reachedEnd, setReachedEnd] = useState(false);
@@ -43,6 +43,6 @@ const WikipediaArticleScreen = ({ articleContent }) => {
   );
 };
 
-export default WikipediaArticleScreen;
+export default WikiArticleScreen;
 
 

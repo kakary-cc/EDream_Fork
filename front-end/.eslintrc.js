@@ -49,7 +49,7 @@ module.exports = {
         'no-self-compare': ['error'],
         'no-unused-expressions': ['error'],
         'no-useless-call': ['error'],
-        'no-use-before-define': ['error'],
+        // 'no-use-before-define': ['error'],
         // 'camelcase': ['error', {properties: 'never'}],
         'func-call-spacing': ['error'],
         'no-lonely-if': ['error'],
