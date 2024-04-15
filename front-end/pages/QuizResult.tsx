@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 
-const resultsScreen = ({ score, restartQuiz }) => {
+const QuizResult = ({ score, restartQuiz }) => {
     return (
-        <view>
+        <View>
             <Text> Quiz Over!</Text>
             <Text> Your score is: {score} </Text>
-        </view>
+        </View>
     );
 };
 
-export default resultsScreen;
+export default QuizResult;
