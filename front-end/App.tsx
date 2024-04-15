@@ -30,7 +30,6 @@ const AppNavigator = () => {
         />
         <Stack.Screen name="Login" component={LoginForm} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
-        
 
         <Stack.Screen
           name="Quiz"
