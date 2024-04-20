@@ -1,27 +1,44 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { NavigationContainer } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import UserProfileScreen from "../pages/UserProfileScreen";
+import Pathway from "../pages/Pathway";
+import Recommendation from "../pages/Recommend";
+// import DebugPage from "../pages/Debug";
+// import StackNavigator from "./NativeStackNavigator";
 
-function HomeScreen() {
+function Screen1() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Home Screen</Text>
-    </View>
+    <Recommendation />
+    // <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    //   <Text>Recommendation</Text>
+    // </View>
   );
 }
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings Screen</Text>
-    </View>
-  );
+function Screen2() {
+  return <Pathway />;
 }
 
-function ProfileScreen() {
+function Screen3() {
   return <UserProfileScreen />;
+}
+
+function Screen0() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Debug Page</Text>
+    </View>
+  );
+  // return (
+  //   // <NavigationContainer independent={true}>
+  //   // <View children={() => <StackNavigator independent={true} />} />
+  //   // <StackNavigator independent={true} />
+  //   // {/* <DebugPage /> */}
+  //   // {/* </NavigationContainer> */}
+  // );
 }
 
 const Tab = createBottomTabNavigator();
@@ -51,9 +68,11 @@ function BottomTabNavigator() {
         tabBarShowLabel: false, // hides the label
       })}
     >
-      <Tab.Screen name="Recommendation" component={HomeScreen} />
-      <Tab.Screen name="Learning Pathway" component={SettingsScreen} />
-      <Tab.Screen name="Personal Profile" component={ProfileScreen} />
+      <Tab.Screen name="Recommendation" component={Screen1} />
+      <Tab.Screen name="Learning Pathway" component={Screen2} />
+      <Tab.Screen name="Personal Profile" component={Screen3} />
+      {/* Comment the following line out to hide the debug page */}
+      <Tab.Screen name="Debug" component={Screen0} />
     </Tab.Navigator>
   );
 }

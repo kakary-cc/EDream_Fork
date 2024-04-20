@@ -8,7 +8,7 @@ import {
   Animated,
 } from "react-native";
 
-const LearningPathwaysScreen = () => {
+const Pathway = () => {
   const [unlockedModules, setUnlockedModules] = useState([0]);
   const [prevScrollPosition, setPrevScrollPosition] = useState(0);
   const scrollViewRef = useRef(null);
@@ -152,4 +152,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LearningPathwaysScreen;
+export default Pathway;
