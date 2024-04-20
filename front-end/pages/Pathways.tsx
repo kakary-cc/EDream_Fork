@@ -1,11 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { View, ScrollView, TouchableOpacity, StyleSheet, Text, Animated } from 'react-native';
+import React, { useState, useEffect, useRef } from "react";
+import {
+  View,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  Animated,
+} from "react-native";
 
 const LearningPathwaysScreen = () => {
-  const [unlockedModules, setUnlockedModules] = useState([0]); 
-  const [prevScrollPosition, setPrevScrollPosition] = useState(0); 
+  const [unlockedModules, setUnlockedModules] = useState([0]);
+  const [prevScrollPosition, setPrevScrollPosition] = useState(0);
   const scrollViewRef = useRef(null);
-  const dotOpacities = useRef(Array.from({ length: 10 }, () => new Animated.Value(0))).current;
+  const dotOpacities = useRef(
+    Array.from({ length: 10 }, () => new Animated.Value(0))
+  ).current;
 
   useEffect(() => {
     scrollToUnlockedModule(unlockedModules.length - 1);
@@ -13,7 +22,7 @@ const LearningPathwaysScreen = () => {
 
   const scrollToUnlockedModule = (index) => {
     if (scrollViewRef.current) {
-      const scrollPosition = (index * 100); 
+      const scrollPosition = index * 100;
       scrollViewRef.current.scrollTo({
         y: scrollPosition,
         animated: true,
@@ -25,7 +34,7 @@ const LearningPathwaysScreen = () => {
     if (unlockedModules.includes(index)) {
       console.log(`Opening module ${index}`);
     } else {
-      console.log('Module is locked');
+      console.log("Module is locked");
     }
   };
 
@@ -65,14 +74,12 @@ const LearningPathwaysScreen = () => {
               activeOpacity={0.7}
             >
               <Animated.View
-                style={[
-                  styles.dot,
-                  { opacity: dotOpacities[index] },
-                ]}
+                style={[styles.dot, { opacity: dotOpacities[index] }]}
               />
             </TouchableOpacity>
             <Text style={styles.moduleText}>
-              {index === 0 ? "Introduction" : `Article Name`}  //TODO Replace with acutal article titles
+              {index === 0 ? "Introduction" : `Article Name`}
+              {/* TODO Replace with acutal article titles */}
             </Text>
           </View>
         ))}
@@ -88,60 +95,60 @@ const LearningPathwaysScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#444444',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#444444",
+    alignItems: "center",
+    justifyContent: "center",
   },
   scrollViewContent: {
-    paddingTop: 150, 
+    paddingTop: 150,
     paddingBottom: 150,
   },
   moduleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 50,
   },
   landingDot: {
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#000000',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#000000",
+    justifyContent: "center",
+    alignItems: "center",
     marginRight: 16,
   },
   dot: {
     width: 20,
     height: 20,
     borderRadius: 10,
-    backgroundColor: '#2196F3',
+    backgroundColor: "#2196F3",
   },
   moduleText: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: '#e0e0e0',
+    fontWeight: "bold",
+    color: "#e0e0e0",
   },
   line: {
-    position: 'absolute',
+    position: "absolute",
     left: 30,
     right: 30,
     height: 1,
-    backgroundColor: '#e0e0e0',
-    borderStyle: 'dotted',
+    backgroundColor: "#e0e0e0",
+    borderStyle: "dotted",
   },
   unlockButton: {
-    backgroundColor: '#2196F3',
+    backgroundColor: "#2196F3",
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 8,
-    position: 'absolute',
+    position: "absolute",
     bottom: 24,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   unlockButtonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });
 
