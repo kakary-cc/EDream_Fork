@@ -58,9 +58,9 @@ export default function Account({ session }: { session: Session }) {
     website,
     avatar_url,
   }: {
-    username: string;
-    website: string;
-    avatar_url: string;
+    username: string,
+    website: string,
+    avatar_url: string,
   }) {
     try {
       setLoading(true);

@@ -6,16 +6,12 @@ import {
   StyleSheet,
   Button,
   View,
-  // SafeAreaView,
+  SafeAreaView,
   ScrollView,
-  // Text,
-  // Alert,
+  Text,
 } from "react-native";
-import { Text } from "react-native-elements";
-import { NavigationContainer } from "@react-navigation/native";
-import BottomTabNavigator from "../components/TabNavigation";
 
-const HomeScreen = ({ navigation }: any) => {
+const DebugPage = ({ navigation }) => {
   // const [titles, setTitles] = useState<string[]>([]);
   const [titles, setTitles] = useState("placeholder");
 
@@ -31,54 +27,16 @@ const HomeScreen = ({ navigation }: any) => {
     setTitles(data);
   }
 
-  // return (
-  //   <ScrollView style={styles.container}>
-  //     {/* Header */}
-  //     <View style={styles.header}>
-  //       <Text style={styles.logoText}>EDream Learning System</Text>
-  //     </View>
-
-  //     {/* Hero Section */}
-  //     <View style={styles.heroSection}>
-  //       <Text style={styles.heroText}>
-  //         Transform Your Commute into a Journey of Learning
-  //       </Text>
-  //       <Button
-  //         title="Start Learning"
-  //         onPress={() => console.log("Navigate to lessons")}
-  //       />
-  //     </View>
-
-  //     {/* How It Works */}
-  //     <View style={styles.section}>
-  //       <Text style={styles.sectionTitle}>How It Works</Text>
-  //       {/* Placeholder for steps */}
-  //     </View>
-
-  //     {/* Explore Interests */}
-  //     <View style={styles.section}>
-  //       <Text style={styles.sectionTitle}>Explore Interests</Text>
-  //       {/* Placeholder for interests categories */}
-  //     </View>
-
-  //     {/* Community Highlights */}
-  //     <View style={styles.section}>
-  //       <Text style={styles.sectionTitle}>Community Highlights</Text>
-  //       {/* Placeholder for testimonials */}
-  //     </View>
-  //   </ScrollView>
-  // );
-
   return (
     <View>
       <Text style={styles.header}>Debug Page.</Text>
       <Button title="Debug" onPress={() => retrieveContent()} />
       <Text>{titles}</Text>
 
-      {/* <Button
+      <Button
         title="Jump to Profile"
         onPress={() => navigation.navigate("Profile", { name: "ExampleUser" })}
-      /> */}
+      />
       <Button
         title="Login Form"
         onPress={() => navigation.navigate("Login", {})}
@@ -135,4 +93,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default DebugPage;

@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text, Button, StyleSheet, Dimensions } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import Pdf from "react-native-pdf";
 
-const ReadPdf = () => {
+export default function ReadPdf() {
   const PdfResource = {
-    uri: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    uri: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", // dummy
     cache: true,
   };
 
@@ -15,12 +15,12 @@ const ReadPdf = () => {
         trustAllCerts={false}
         source={PdfResource}
         style={styles.container}
-        onLoadComplete={(numberOfPages, filePath) => {}}
+        onLoadComplete={(/*numberOfPages, filePath*/) => {}}
       />
       <Text>Proceed to Quiz</Text>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -35,5 +35,3 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height,
   },
 });
-
-export default ReadPdf;

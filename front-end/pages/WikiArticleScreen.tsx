@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { View, ScrollView, Text, Button, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import ReadPdf from "../lib/Pdf";
+import ReadPdf from "../components/PDF";
 
 const WikiArticleScreen = ({ articleContent }) => {
   const navigation = useNavigation();
