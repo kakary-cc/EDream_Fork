@@ -1,7 +1,9 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const QuizResult = ({ navigation, route }) => {
+  // const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Text style={styles.title}> Quiz Over!</Text>
@@ -9,6 +11,7 @@ const QuizResult = ({ navigation, route }) => {
         {" "}
         Your score is: {route.params.score}{" "}
       </Text>
+      <Button title="Home" onPress={() => navigation.navigate("Home", {})} />
     </View>
   );
 };

@@ -16,10 +16,17 @@ import WikipediaArticleScreen from "./pages/WikiArticleScreen";
 import QuizScreen from "./pages/Quiz";
 import QuizResult from "./pages/QuizResult";
 import UserProfileScreen from "./pages/UserProfileScreen";
+import BottomTabNavigator from "./components/TabNavigation";
+import LearningPathwaysScreen from "./pages/Pathways";
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
+  return (
+    <NavigationContainer>
+      <BottomTabNavigator />
+    </NavigationContainer>
+  );
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -43,6 +50,7 @@ const AppNavigator = () => {
           options={{ title: "Wikipedia Article" }}
         />
         <Stack.Screen name="Landing Page" component={UserProfileScreen} />
+        <Stack.Screen name="Pathway" component={LearningPathwaysScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

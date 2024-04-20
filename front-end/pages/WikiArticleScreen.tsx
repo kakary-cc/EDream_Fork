@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { View, ScrollView, Text, Button, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect, useRef } from "react";
+import { View, ScrollView, Text, Button, Alert } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import ReadPdf from "../lib/Pdf";
 
 const WikiArticleScreen = ({ articleContent }) => {
   const navigation = useNavigation();
@@ -9,12 +10,13 @@ const WikiArticleScreen = ({ articleContent }) => {
 
   const handleScroll = (event) => {
     const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
-    const isEnd = layoutMeasurement.height + contentOffset.y >= contentSize.height;
+    const isEnd =
+      layoutMeasurement.height + contentOffset.y >= contentSize.height;
     setReachedEnd(isEnd);
   };
 
   const handleTakeQuiz = () => {
-    navigation.navigate('Quiz');
+    navigation.navigate("Quiz");
   };
 
   const handleContinueReading = () => {
@@ -24,25 +26,30 @@ const WikiArticleScreen = ({ articleContent }) => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
-      <ScrollView
-        ref={scrollViewRef} // Assign the ref to ScrollView
-        style={{ flex: 1 }}
-        onScroll={handleScroll}
-        scrollEventThrottle={16}
-      >
-        <Text>{articleContent}</Text>
-      </ScrollView>
-      {reachedEnd && (
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 10 }}>
-          <Button title="Take Quiz" onPress={handleTakeQuiz} />
-          <Button title="Reread Article" onPress={handleContinueReading} />
-        </View>
-      )}
+    <View>
+      <ReadPdf />
+      <Button
+        title="Landing Page"
+        onPress={() => navigation.navigate("Quiz", {})}
+      />
     </View>
+    // <View style={{ flex: 1 }}>
+    //   <ScrollView
+    //     ref={scrollViewRef} // Assign the ref to ScrollView
+    //     style={{ flex: 1 }}
+    //     onScroll={handleScroll}
+    //     scrollEventThrottle={16}
+    //   >
+    //     <Text>{articleContent}</Text>
+    //   </ScrollView>
+    //   {reachedEnd && (
+    //     <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 10 }}>
+    //       <Button title="Take Quiz" onPress={handleTakeQuiz} />
+    //       <Button title="Reread Article" onPress={handleContinueReading} />
+    //     </View>
+    //   )}
+    // </View>
   );
 };
 
 export default WikiArticleScreen;
-
-
