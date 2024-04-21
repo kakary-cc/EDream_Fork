@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-const UserProfileScreen = () => {
+const UserProfile = () => {
   const navigation = useNavigation();
 
   const handleNavigation = (screenName: string) => {
@@ -12,10 +12,7 @@ const UserProfileScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image
-          source={require("../assets/avatar.png")}
-          style={styles.avatar}
-        />
+        <Image source={require("../assets/avatar.png")} style={styles.avatar} />
         <Text style={styles.username}>REPLACE WITH USERS USERNAME</Text>
         <Text style={styles.score}>Learning points: FILL IN SCORE</Text>
       </View>
@@ -112,4 +109,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UserProfileScreen;
+export default UserProfile;

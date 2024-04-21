@@ -11,7 +11,10 @@ const QuizResult = ({ navigation, route }) => {
         {" "}
         Your score is: {route.params.score}{" "}
       </Text>
-      <Button title="Home" onPress={() => navigation.navigate("Home", {})} />
+      <Button
+        title="Finish"
+        onPress={() => navigation.navigate("Recommendation", {})}
+      />
     </View>
   );
 };

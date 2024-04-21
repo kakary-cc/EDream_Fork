@@ -3,7 +3,7 @@ import { View, ScrollView, Text, Button, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import ReadPdf from "../components/PDF";
 
-const WikipediaArticle = ({ articleContent }) => {
+const ArticleView = ({ articleContent }) => {
   const navigation = useNavigation();
   const scrollViewRef = useRef(null); // Create a ref for ScrollView
   const [reachedEnd, setReachedEnd] = useState(false);
@@ -16,7 +16,7 @@ const WikipediaArticle = ({ articleContent }) => {
   };
 
   const handleTakeQuiz = () => {
-    navigation.navigate("Quiz");
+    navigation.navigate("TakeQuiz");
   };
 
   const handleContinueReading = () => {
@@ -28,9 +28,11 @@ const WikipediaArticle = ({ articleContent }) => {
   return (
     <View>
       <ReadPdf />
+      <Text>Finished with the content?</Text>
+      <Text>Test your knowledge with a short quiz!</Text>
       <Button
-        title="Landing Page"
-        onPress={() => navigation.navigate("Quiz", {})}
+        title="Take Quiz"
+        onPress={() => navigation.navigate("TakeQuiz", {})}
       />
     </View>
     // <View style={{ flex: 1 }}>
@@ -52,4 +54,4 @@ const WikipediaArticle = ({ articleContent }) => {
   );
 };
 
-export default WikipediaArticle;
+export default ArticleView;
