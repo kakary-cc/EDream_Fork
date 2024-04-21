@@ -1,17 +1,41 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { gestureHandlerRootHOC } from "react-native-gesture-handler";
 // import { NavigationContainer } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import UserProfileScreen from "../pages/UserProfileScreen";
 import Pathway from "../pages/Pathway";
-import Recommendation from "../pages/Recommend";
+import Recommendations from "../pages/Recommendations";
 // import DebugPage from "../pages/Debug";
-// import StackNavigator from "./NativeStackNavigator";
+
+// import Stack from "./NativeStackNavigator";
+
+// import { createStackNavigator } from "@react-navigation/stack";
+import WikipediaArticle from "../pages/WikipediaArticle";
+// import RecommendationsStackNavigator from "./RecommendationsStackNavigator";
+
+// const RecommendationsStack = createStackNavigator();
+
+// function Screen1() {
+//   return (
+//     <RecommendationsStack.Navigator>
+//       <RecommendationsStack.Screen
+//         name="Recommendations"
+//         component={Recommendations}
+//       />
+//       <RecommendationsStack.Screen
+//         name="ContentDetailScreen"
+//         component={WikipediaArticle}
+//       />
+//     </RecommendationsStack.Navigator>
+//   );
+// }
 
 function Screen1() {
   return (
-    <Recommendation />
+    // <RecommendationsStackNavigator/>
+    <Recommendations />
     // <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
     //   <Text>Recommendation</Text>
     // </View>

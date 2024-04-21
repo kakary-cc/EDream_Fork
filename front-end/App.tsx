@@ -1,54 +1,66 @@
-// import React, { Component, useState, useEffect } from "react";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-// import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import "react-native-url-polyfill/auto";
-// import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
-// import { Session } from "@supabase/supabase-js";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-// import { supabase } from "./api/supabase";
-// import Auth from "./components/Auth";
-// import Account from "./components/Account";
-// import DebugPage from "./pages/Debug";
-// import ProfileScreen from "./pages/Profile";
-// import LoginForm from "./pages/LoginForm";
-// import WikipediaArticleScreen from "./pages/WikiArticleScreen";
-// import QuizScreen from "./pages/Quiz";
-// import QuizResult from "./pages/QuizResult";
-// import UserProfileScreen from "./pages/UserProfileScreen";
-import BottomTabNavigator from "./components/BottomTabNavigator";
-// import LearningPathwaysScreen from "./pages/Pathways";
+import Recommendations from "./pages/Recommendations";
+import Pathway from "./pages/Pathway";
+import UserProfileScreen from "./pages/UserProfileScreen";
+import DebugPage from "./pages/Debug";
+import StackNavigator from "./components/NativeStackNavigator";
 
-import { registerRootComponent } from "expo";
-// // import React from "react";
-import { View } from "react-native";
-
-// import { LogBox } from "react-native";
-// LogBox.ignoreLogs(["new NativeEventEmitter"]); // Ignore log notification by message
-// LogBox.ignoreAllLogs(); //Ignore all log notifications
-
-class App extends React.Component {
-  render() {
-    return (
-      // <View />;
-      <NavigationContainer>
-        <BottomTabNavigator />
-      </NavigationContainer>
-    );
-  }
+function Screen1() {
+  return <Recommendations />;
 }
 
-registerRootComponent(App);
+function Screen2() {
+  return <Pathway />;
+}
 
-// const Stack = createNativeStackNavigator();
+function Screen3() {
+  return <UserProfileScreen />;
+}
 
-// const App = () => {
-//   return (
-//     <NavigationContainer>
-//       <BottomTabNavigator />
-//     </NavigationContainer>
-//   );
-//   // return <NavigationContainer></NavigationContainer>;
-// };
+function Screen0() {
+  return <DebugPage />;
+}
+
+const Tab = createBottomTabNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+            switch (route.name) {
+              case "Personal Profile":
+                iconName = focused ? "account" : "account-outline";
+                break;
+              case "Recommendation":
+                iconName = focused ? "school" : "school-outline";
+                break;
+              case "Learning Pathway":
+                iconName = focused ? "map" : "map-outline";
+                break;
+              default:
+                iconName = "progress-question";
+                break;
+            }
+            return <Icon name={iconName} size={size} color={color} />;
+          },
+          tabBarShowLabel: false, // hides the label
+        })}
+      >
+        <Tab.Screen name="Recommendation" component={Screen1} />
+        <Tab.Screen name="Learning Pathway" component={Screen2} />
+        <Tab.Screen name="Personal Profile" component={Screen3} />
+        {/* Comment the following line out to hide the debug page */}
+        <Tab.Screen name="Debug" component={StackNavigator} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
 
 export default App;

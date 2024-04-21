@@ -3,7 +3,7 @@ import { View, ScrollView, Text, Button, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import ReadPdf from "../components/PDF";
 
-const WikiArticleScreen = ({ articleContent }) => {
+const WikipediaArticle = ({ articleContent }) => {
   const navigation = useNavigation();
   const scrollViewRef = useRef(null); // Create a ref for ScrollView
   const [reachedEnd, setReachedEnd] = useState(false);
@@ -52,4 +52,4 @@ const WikiArticleScreen = ({ articleContent }) => {
   );
 };
 
-export default WikiArticleScreen;
+export default WikipediaArticle;
