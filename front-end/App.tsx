@@ -3,14 +3,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-import Recommendations from "./pages/Recommendations";
+import Recommendation from "./pages/Recommendation";
 import Pathway from "./pages/Pathway";
-import UserProfileScreen from "./pages/UserProfileScreen";
+import UserProfile from "./pages/UserProfile";
 import DebugPage from "./pages/Debug";
-import StackNavigator from "./components/NativeStackNavigator";
+import DebugStack from "./navigation/DebugStack";
+import LearnStack from "./navigation/LearnStack";
 
 function Screen1() {
-  return <Recommendations />;
+  return <Recommendation />;
 }
 
 function Screen2() {
@@ -18,7 +19,7 @@ function Screen2() {
 }
 
 function Screen3() {
-  return <UserProfileScreen />;
+  return <UserProfile />;
 }
 
 function Screen0() {
@@ -35,14 +36,14 @@ function App() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             switch (route.name) {
-              case "Personal Profile":
-                iconName = focused ? "account" : "account-outline";
-                break;
-              case "Recommendation":
+              case "Get Learning":
                 iconName = focused ? "school" : "school-outline";
                 break;
-              case "Learning Pathway":
+              case "Your Pathway":
                 iconName = focused ? "map" : "map-outline";
+                break;
+              case "Personal Profile":
+                iconName = focused ? "account" : "account-outline";
                 break;
               default:
                 iconName = "progress-question";
@@ -53,11 +54,11 @@ function App() {
           tabBarShowLabel: false, // hides the label
         })}
       >
-        <Tab.Screen name="Recommendation" component={Screen1} />
-        <Tab.Screen name="Learning Pathway" component={Screen2} />
+        <Tab.Screen name="Get Learning" component={LearnStack} />
+        <Tab.Screen name="Your Pathway" component={Screen2} />
         <Tab.Screen name="Personal Profile" component={Screen3} />
         {/* Comment the following line out to hide the debug page */}
-        <Tab.Screen name="Debug" component={StackNavigator} />
+        <Tab.Screen name="Debug" component={DebugStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );

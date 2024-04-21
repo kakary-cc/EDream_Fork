@@ -40,12 +40,12 @@ const recommendedContent = {
   // More categories...
 };
 
-const Recommendations = () => {
+const Recommendation = () => {
   const navigation = useNavigation();
 
   const navigateToContentDetail = (contentId) => {
     // Navigate to the Detail Screen, passing the content ID as a parameter
-    navigation.navigate("WikipediaArticle", { contentId });
+    navigation.navigate("ArticleView", { contentId });
   };
 
   return (
@@ -105,4 +105,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Recommendations;
+export default Recommendation;

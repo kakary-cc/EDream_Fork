@@ -1,21 +1,18 @@
 import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import DebugPage from "../pages/Debug";
-import ProfileScreen from "../pages/Profile";
+import ProfileScreen from "../pages/UserProfile";
 import LoginForm from "../pages/LoginForm";
-import WikipediaArticleScreen from "../pages/WikipediaArticle";
-import QuizScreen from "../pages/Quiz";
+import WikipediaArticleScreen from "../pages/ArticleView";
+import TakeQuiz from "../pages/TakeQuiz";
 import QuizResult from "../pages/QuizResult";
-import UserProfileScreen from "../pages/UserProfileScreen";
+import UserProfile from "../pages/UserProfile";
 import Pathway from "../pages/Pathway";
 
-// const Stack = createNativeStackNavigator();
-
-import { createStackNavigator } from "@react-navigation/stack";
-// import { NavigationContainer } from "@react-navigation/native";
 const Stack = createStackNavigator();
 
-export default function StackNavigator() {
+export default function DebugStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -28,7 +25,7 @@ export default function StackNavigator() {
 
       <Stack.Screen
         name="Quiz"
-        component={QuizScreen}
+        component={TakeQuiz}
         options={{ title: "Quiz" }}
       />
       <Stack.Screen name="QuizResult" component={QuizResult} />
@@ -37,9 +34,8 @@ export default function StackNavigator() {
         component={WikipediaArticleScreen}
         options={{ title: "Wikipedia Article" }}
       />
-      <Stack.Screen name="Landing Page" component={UserProfileScreen} />
+      <Stack.Screen name="Landing Page" component={UserProfile} />
       <Stack.Screen name="Pathway" component={Pathway} />
     </Stack.Navigator>
-    // </NavigationContainer>
   );
 }

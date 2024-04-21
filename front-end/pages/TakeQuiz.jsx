@@ -3,7 +3,7 @@ import { View, Text, Button, StyleSheet } from "react-native";
 import { supabase } from "../api/supabase";
 import { useNavigation } from "@react-navigation/native";
 
-const QuizScreen = () => {
+const TakeQuiz = () => {
   const [quiz, setQuiz] = useState([]);
   const [cur, setCur] = useState(0);
   const [question, setQuestion] = useState([]);
@@ -24,7 +24,7 @@ const QuizScreen = () => {
       setQuiz(quiz);
       setQuestion(quiz?.[0]);
       setCur(() => cur + 1);
-      console.log("Quiz loaded.");
+      // console.log("Quiz loaded.");
     } catch (error) {
       throw "Failed to fetch questions.";
     }
@@ -83,4 +83,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default QuizScreen;
+export default TakeQuiz;
