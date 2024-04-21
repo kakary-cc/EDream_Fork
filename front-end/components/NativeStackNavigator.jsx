@@ -1,22 +1,24 @@
 import React from "react";
-import { NativeStackView } from "@react-navigation/native-stack";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import DebugPage from "../pages/Debug";
 import ProfileScreen from "../pages/Profile";
 import LoginForm from "../pages/LoginForm";
-import WikipediaArticleScreen from "../pages/WikiArticleScreen";
+import WikipediaArticleScreen from "../pages/WikipediaArticle";
 import QuizScreen from "../pages/Quiz";
 import QuizResult from "../pages/QuizResult";
 import UserProfileScreen from "../pages/UserProfileScreen";
 import Pathway from "../pages/Pathway";
 
-const Stack = createNativeStackNavigator();
+// const Stack = createNativeStackNavigator();
+
+import { createStackNavigator } from "@react-navigation/stack";
+// import { NavigationContainer } from "@react-navigation/native";
+const Stack = createStackNavigator();
 
 export default function StackNavigator() {
   return (
     <Stack.Navigator>
-      <NativeStackView.Screen
+      <Stack.Screen
         name="Home"
         component={DebugPage}
         options={{ title: "Welcome" }}
@@ -38,5 +40,6 @@ export default function StackNavigator() {
       <Stack.Screen name="Landing Page" component={UserProfileScreen} />
       <Stack.Screen name="Pathway" component={Pathway} />
     </Stack.Navigator>
+    // </NavigationContainer>
   );
 }
