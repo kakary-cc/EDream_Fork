@@ -1,6 +1,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
 import UserProfileScreen from "./pages/UserProfileScreen";
+import {describe, expect, test} from '@jest/globals';
 
 // Mocking react-navigation/native useNavigation hook
 jest.mock("@react-navigation/native", () => ({
