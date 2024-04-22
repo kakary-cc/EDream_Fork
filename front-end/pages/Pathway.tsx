@@ -75,6 +75,7 @@ const Pathway = ({ navigation, route }) => {
         scrollEventThrottle={16}
         contentContainerStyle={styles.scrollViewContent}
       >
+        <Text style={styles.interest}>Cooking and Baking</Text>
         {Array.from({ length: 10 }, (_, index) => (
           <View key={index} style={styles.moduleContainer}>
             <TouchableOpacity
@@ -108,8 +109,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  interest: {
+    marginBottom: 50,
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "#CCC",
+  },
   scrollViewContent: {
-    paddingTop: 150,
+    marginTop: 30,
     paddingBottom: 150,
   },
   moduleContainer: {

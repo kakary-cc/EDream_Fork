@@ -76,7 +76,7 @@ const Recommendation = () => {
 
   function fetchContents(interests) {
     interests.forEach((interest) => {
-      setTimeout(() => {}, 100);
+      setTimeout(() => {}, 200);
       fetContentsBasedOnInterest(interest);
     });
   }
@@ -94,13 +94,14 @@ const Recommendation = () => {
     >
       {interests.map((interest) => (
         <View key={interest} style={styles.section}>
-          <Text style={styles.sectionTitle}>
-            {contents[interest]?.length > 0
-              ? "Because you are interested in " +
-                interest.replace(/[#_]/g, " ") +
-                ":"
-              : " "}
-          </Text>
+          {contents[interest]?.length > 0 ? (
+            <Text style={styles.sectionTitle}>
+              Because you are interested in {interest.replace(/[#_]/g, " ")}:
+            </Text>
+          ) : (
+            <></>
+          )}
+
           {contents[interest]?.map((content) => (
             <TouchableOpacity
               key={content.uuid}
