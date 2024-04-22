@@ -1,6 +1,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
 import ArticleView from "../pages/ArticleView";
+import {describe, expect, test, jest} from '@jest/globals';
 
 // Mocking react-navigation/native useNavigation hook
 jest.mock("@react-navigation/native", () => ({
