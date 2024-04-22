@@ -4,40 +4,48 @@ import { supabase } from "../api/supabase";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const TakeQuiz = () => {
+const TakeQuiz = ({ route }) => {
   const [quiz, setQuiz] = useState([]);
   const [cur, setCur] = useState(0);
   const [question, setQuestion] = useState([]);
   const [score, setScore] = useState(0);
+  const [feedback, setFeedback] = useState(true);
 
   const navigation = useNavigation();
+  const uuid = route.params.uuid;
+  const fromPathway = route.params.fromPathway;
 
   const fetchQuestions = async () => {
-    let result;
     try {
-      result = await supabase
+      const query = await supabase
         .from("Content")
         .select(`quiz`)
-        .eq(`title`, `The Grands Boulevards`); // TODO: hardcoded
-
-      let quiz = JSON.parse(result?.data?.[0]?.quiz);
-      quiz = quiz?.questions;
+        .eq(`uuid`, uuid);
+      const data = query.data;
+      const quiz = JSON.parse(data[0].quiz);
       setQuiz(quiz);
       setQuestion(quiz?.[0]);
       setCur(() => cur + 1);
+
+      console.log(quiz);
     } catch (error) {
       throw "Failed to fetch questions.";
     }
   };
 
   const handleAnswer = (answer) => {
-    // const isCorrect = answer === "correct answer"; // TODO: hardcoded
-    const isCorrect = Math.random() > 0.25;
+    console.log("You chose:", answer);
+    console.log("Correct answer:", question.answer);
+    const isCorrect = answer === question.answer;
+    setFeedback(isCorrect);
     if (isCorrect) {
       setScore(score + 20);
     }
     if (cur === quiz.length) {
-      navigation.navigate("QuizResult", { score: score });
+      navigation.navigate("QuizResult", {
+        score: score,
+        fromPathway: fromPathway,
+      });
     }
     setQuestion(quiz?.[cur]);
     setCur(() => cur + 1);
@@ -62,7 +70,11 @@ const TakeQuiz = () => {
           </TouchableOpacity>
         ))}
       </View>
-      <View style={styles.scoreContainer}>
+      <View
+        style={
+          feedback ? styles.scoreContainer : styles.wrongAnswerScoreContainer
+        }
+      >
         <Text style={styles.scoreText}>Score: {score}</Text>
       </View>
     </View>
@@ -110,6 +122,12 @@ const styles = StyleSheet.create({
   },
   scoreContainer: {
     backgroundColor: "#4CAF50",
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+  },
+  wrongAnswerScoreContainer: {
+    backgroundColor: "#EC5A3B",
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 8,

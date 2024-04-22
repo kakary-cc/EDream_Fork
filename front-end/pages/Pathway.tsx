@@ -8,7 +8,7 @@ import {
   Animated,
 } from "react-native";
 
-const Pathway = () => {
+const Pathway = ({ navigation, route }) => {
   const [unlockedModules, setUnlockedModules] = useState([0]);
   const [prevScrollPosition, setPrevScrollPosition] = useState(0);
   const scrollViewRef = useRef(null);
@@ -48,6 +48,15 @@ const Pathway = () => {
       }).start();
       setUnlockedModules([...unlockedModules, nextModuleIndex]);
     }
+    setTimeout(() => {
+      navigation.navigate(
+        Math.floor(nextModuleIndex / 2) === 0 ? "ArticleView" : "TakeQuiz",
+        {
+          uuid: "f0068448-9ca2-4d1e-93bf-bd2fc131db6c",
+          fromPathway: true,
+        }
+      );
+    }, 800);
   };
 
   const handlePathwayPress = () => {
@@ -78,7 +87,7 @@ const Pathway = () => {
               />
             </TouchableOpacity>
             <Text style={styles.moduleText}>
-              {index === 0 ? "Introduction" : `Article Name`}
+              {index === 0 ? "Introduction" : `Milestone`}
               {/* TODO Replace with acutal article titles */}
             </Text>
           </View>

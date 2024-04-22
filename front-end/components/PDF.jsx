@@ -10,14 +10,12 @@ export default function ReadPdf() {
 
   return (
     <View>
-      <Text>Begin of the file</Text>
       <Pdf
         trustAllCerts={false}
         source={PdfResource}
         style={styles.container}
         onLoadComplete={(/*numberOfPages, filePath*/) => {}}
       />
-      <Text>End of the file</Text>
     </View>
   );
 }
