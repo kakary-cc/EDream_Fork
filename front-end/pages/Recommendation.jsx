@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
+  RefreshControl,
+  SafeAreaView,
   ScrollView,
   View,
   Text,
@@ -27,34 +29,55 @@ const Recommendation = () => {
 
   const [contents, setContents] = useState({});
 
-  const navigateToContentDetail = (contentId) => {
-    navigation.navigate("ArticleView", { contentId });
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    fetchContents(interests);
+    // console.log(Object.keys(contents));
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
+
+  const navigateToContentDetail = (uuid) => {
+    navigation.navigate("ArticleView", { uuid });
   };
 
-  useEffect(() => {
-    async function fetchArticles(interest) {
-      let { data: query } = await supabase
-        .from("Content_Tags")
-        .select(`Content(*)`)
-        .eq("tag", interest);
-      // Only serve two articles for each interests
-      query = query?.slice(-2);
+  async function fetContentsBasedOnInterest(interest) {
+    let { data: query } = await supabase
+      .from("Content_Tags")
+      .select(`Content(*)`)
+      .eq("tag", interest);
+    // Only serve two articles for each interests
+    query = query?.slice(-2);
 
-      setContents({
-        ...contents,
-        [interest]: query.map((entry) => {
-          console.log(interest, ":", entry.Content.title);
-          return entry.Content;
-        }),
-      });
-    }
-    interests.forEach((interest) => {
-      fetchArticles(interest);
+    setContents({
+      ...contents,
+      [interest]: query.map((entry) => {
+        console.log(interest, ":", entry.Content.title);
+        return entry.Content;
+      }),
     });
+  }
+
+  function fetchContents(interests) {
+    interests.forEach((interest) => {
+      fetContentsBasedOnInterest(interest);
+    });
+  }
+
+  useEffect(() => {
+    fetchContents(interests);
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       {interests.map((interest) => (
         <View key={interest} style={styles.section}>
           <Text style={styles.sectionTitle}>
