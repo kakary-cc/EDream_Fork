@@ -12,15 +12,15 @@ import { useNavigation } from "@react-navigation/native";
 import { supabase } from "../api/supabase";
 
 const interests = [
-  // "technology",
+  "technology",
+  "art",
+  "cooking_and_baking",
   // "design",
   // "marketing",
   // "photography_and_videology",
   // "language",
-  "cooking_and_baking",
   // "fitness_and_nutrition",
   // "finance_and_investing",
-  "art",
   // "history",
 ];
 
@@ -44,12 +44,25 @@ const Recommendation = () => {
     navigation.navigate("ArticleView", { uuid });
   };
 
+  function shuffle(array) {
+    let currentIndex = array.length;
+    while (currentIndex !== 0) {
+      const randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+  }
+
   async function fetContentsBasedOnInterest(interest) {
     let { data: query } = await supabase
       .from("Content_Tags")
       .select(`Content(*)`)
       .eq("tag", interest);
     // Only serve two articles for each interests
+    shuffle(query);
     query = query?.slice(-2);
 
     setContents({
@@ -63,6 +76,7 @@ const Recommendation = () => {
 
   function fetchContents(interests) {
     interests.forEach((interest) => {
+      setTimeout(() => {}, 100);
       fetContentsBasedOnInterest(interest);
     });
   }
@@ -81,7 +95,11 @@ const Recommendation = () => {
       {interests.map((interest) => (
         <View key={interest} style={styles.section}>
           <Text style={styles.sectionTitle}>
-            Because you are interested in {interest.replace(/[#_]/g, " ")}:
+            {contents[interest]?.length > 0
+              ? "Because you are interested in " +
+                interest.replace(/[#_]/g, " ") +
+                ":"
+              : " "}
           </Text>
           {contents[interest]?.map((content) => (
             <TouchableOpacity
