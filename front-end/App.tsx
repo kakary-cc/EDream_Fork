@@ -64,5 +64,26 @@ function App() {
     </NavigationContainer>
   );
 }
+/*const sendNotification = async () => {
+    console.log("Sending push notification...");
 
+    // notification message
+    const message = {
+      to: expoPushToken,
+      sound: "default",
+      title: "My first push notification!",
+      body: "This is my first push notification made with expo rn app",
+    };
+
+    await fetch("https://exp.host/--/api/v2/push/send", {
+      method: "POST",
+      headers: {
+        host: "exp.host",
+        accept: "application/json",
+        "accept-encoding": "gzip, deflate",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(message),
+    });
+  };*/
 export default App;
