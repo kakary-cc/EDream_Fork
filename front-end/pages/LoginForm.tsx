@@ -1,15 +1,10 @@
-import React, { Component, useState, useEffect } from 'react';
-import { Session } from '@supabase/supabase-js';
-import {
-    StyleSheet,
-    TouchableOpacity,
-    Text,
-    View
-  } from 'react-native';
+import React, { useState, useEffect } from "react";
+import { Session } from "@supabase/supabase-js";
+import { View } from "react-native";
 
-import { supabase } from '../api/supabase';
-import Auth from '../components/Auth';
-import Account from '../components/Account';
+import { supabase } from "../api/supabase";
+import Auth from "../components/Auth";
+import Account from "../components/Account";
 
 function LoginForm() {
   const [session, setSession] = useState<Session | null>(null);
@@ -26,7 +21,11 @@ function LoginForm() {
 
   return (
     <View>
-      {session && session.user ? <Account key={session.user.id} session={session} /> : <Auth />}
+      {session && session.user ? (
+        <Account key={session.user.id} session={session} />
+      ) : (
+        <Auth />
+      )}
     </View>
   );
 }

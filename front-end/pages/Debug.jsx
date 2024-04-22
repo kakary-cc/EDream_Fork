@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 import { supabase } from "../api/supabase";
 
-import {
-  Alert,
-  StyleSheet,
-  Button,
-  View,
-  SafeAreaView,
-  ScrollView,
-  Text,
-} from "react-native";
+import { StyleSheet, Button, View, Text } from "react-native";
 
 const DebugPage = ({ navigation }) => {
   // const [titles, setTitles] = useState<string[]>([]);

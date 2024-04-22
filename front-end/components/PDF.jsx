@@ -10,14 +10,14 @@ export default function ReadPdf() {
 
   return (
     <View>
-      <Text>Read PDF</Text>
+      <Text>Begin of the file</Text>
       <Pdf
         trustAllCerts={false}
         source={PdfResource}
         style={styles.container}
         onLoadComplete={(/*numberOfPages, filePath*/) => {}}
       />
-      <Text>Proceed to Quiz</Text>
+      <Text>End of the file</Text>
     </View>
   );
 }
