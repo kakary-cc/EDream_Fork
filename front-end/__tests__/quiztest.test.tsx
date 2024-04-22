@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import QuizResult from './pages/QuizResult';
+import {describe, expect, test} from '@jest/globals';
 
 describe('QuizResult', () => {
   test('renders correctly with score', () => {
