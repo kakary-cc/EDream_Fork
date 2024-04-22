@@ -52,7 +52,7 @@ const Pathway = ({ navigation, route }) => {
       navigation.navigate(
         Math.floor(nextModuleIndex / 2) === 0 ? "ArticleView" : "TakeQuiz",
         {
-          uuid: "f0068448-9ca2-4d1e-93bf-bd2fc131db6c",
+          uuid: "f0068448-9ca2-4d1e-93bf-bd2fc131db6c", // HARDCODED
           fromPathway: true,
         }
       );

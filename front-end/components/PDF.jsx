@@ -11,7 +11,7 @@ export default function ReadPdf() {
   return (
     <View>
       <Pdf
-        trustAllCerts={false}
+        trustAllCerts={true}
         source={PdfResource}
         style={styles.container}
         onLoadComplete={(/*numberOfPages, filePath*/) => {}}
