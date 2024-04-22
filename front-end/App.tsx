@@ -9,7 +9,26 @@ import PathwayStack from "./navigation/PathwayStack";
 // import DebugStack from "./navigation/DebugStack";
 
 const Tab = createBottomTabNavigator();
+/*Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+});
 
+export default function App() {
+  const [expoPushToken, setExpoPushToken] = useState("");
+
+  useEffect(() => {
+    console.log("Registering for push notifications...");
+    registerForPushNotificationsAsync()
+      .then((token) => {
+        console.log("token: ", token);
+        setExpoPushToken(token);
+      })
+      .catch((err) => console.log(err));
+  }, []);*/
 function App() {
   return (
     <NavigationContainer>
