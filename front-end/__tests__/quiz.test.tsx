@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import QuizScreen from './pages/QuizScreen';
+import QuizScreen from '../pages/QuizScreen';
+import {describe, expect, test} from '@jest/globals';
 
 describe('QuizScreen', () => {
   test('renders correctly with initial question and score', () => {
