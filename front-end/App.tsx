@@ -3,28 +3,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-import Recommendation from "./pages/Recommendation";
-import Pathway from "./pages/Pathway";
-import UserProfile from "./pages/UserProfile";
-import DebugPage from "./pages/Debug";
-import DebugStack from "./navigation/DebugStack";
 import LearnStack from "./navigation/LearnStack";
-
-function Screen1() {
-  return <Recommendation />;
-}
-
-function Screen2() {
-  return <Pathway />;
-}
-
-function Screen3() {
-  return <UserProfile />;
-}
-
-function Screen0() {
-  return <DebugPage />;
-}
+import ProfileStack from "./navigation/ProfileStack";
+import PathwayStack from "./navigation/PathwayStack";
+// import DebugStack from "./navigation/DebugStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -55,10 +37,10 @@ function App() {
         })}
       >
         <Tab.Screen name="Get Learning" component={LearnStack} />
-        <Tab.Screen name="Your Pathway" component={Screen2} />
-        <Tab.Screen name="Personal Profile" component={Screen3} />
+        <Tab.Screen name="Your Pathway" component={PathwayStack} />
+        <Tab.Screen name="Personal Profile" component={ProfileStack} />
         {/* Comment the following line out to hide the debug page */}
-        <Tab.Screen name="Debug" component={DebugStack} />
+        {/* <Tab.Screen name="Debug" component={DebugStack} /> */}
       </Tab.Navigator>
     </NavigationContainer>
   );

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { supabase } from "../api/supabase";
 import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const TakeQuiz = () => {
   const [quiz, setQuiz] = useState([]);
@@ -24,14 +25,14 @@ const TakeQuiz = () => {
       setQuiz(quiz);
       setQuestion(quiz?.[0]);
       setCur(() => cur + 1);
-      // console.log("Quiz loaded.");
     } catch (error) {
       throw "Failed to fetch questions.";
     }
   };
 
   const handleAnswer = (answer) => {
-    const isCorrect = answer === "correct answer"; // TODO: hardcoded
+    // const isCorrect = answer === "correct answer"; // TODO: hardcoded
+    const isCorrect = Math.random() > 0.25;
     if (isCorrect) {
       setScore(score + 20);
     }
@@ -52,14 +53,18 @@ const TakeQuiz = () => {
         <Text style={styles.questionText}>{question?.question}</Text>
 
         {question?.options?.map((option, index) => (
-          <Button
+          <TouchableOpacity
             key={index}
-            title={option}
+            style={styles.optionButton}
             onPress={() => handleAnswer(option)}
-          />
+          >
+            <Text style={styles.optionText}>{option}</Text>
+          </TouchableOpacity>
         ))}
       </View>
-      <Text>Score: {score}</Text>
+      <View style={styles.scoreContainer}>
+        <Text style={styles.scoreText}>Score: {score}</Text>
+      </View>
     </View>
   );
 };
@@ -67,19 +72,52 @@ const TakeQuiz = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    paddingHorizontal: 20,
-    paddingTop: 40,
+    backgroundColor: "#444444",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  quizContainer: {
-    padding: 20,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 10,
+  moduleText: {
+    color: "#CCCCCC",
+    fontSize: 24,
+    fontWeight: "bold",
+    marginTop: 40,
     marginBottom: 20,
   },
+  quizContainer: {
+    padding: 16,
+    backgroundColor: "#444444",
+    borderRadius: 8,
+    marginBottom: 16,
+    width: "80%",
+  },
   questionText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 16,
+    color: "#fff",
+  },
+  optionButton: {
+    backgroundColor: "#666666",
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    marginBottom: 16,
+  },
+  optionText: {
+    color: "#fff",
     fontSize: 16,
+    fontWeight: "bold",
+  },
+  scoreContainer: {
+    backgroundColor: "#4CAF50",
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+  },
+  scoreText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
 
