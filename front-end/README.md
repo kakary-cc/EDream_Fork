@@ -5,6 +5,7 @@
 Framework
 
 > React Native
+> Expo - to accelerate development.  Expo is an open-source platform and set of tools built on top of React Native that aims to simplify and accelerate the development of mobile applications. Easy integrating with Supabase
 
 
 
