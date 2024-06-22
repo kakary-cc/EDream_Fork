@@ -1,9 +1,54 @@
-### Supabase
-> Supabase  -  Collection of tools  specifically designed for mobile and web developers and an alternate to firebase. It has relational database, autheticaiton for signups and and serverless storage and more features available. Our team used it for  -slide. It has examples of integrating it with other frameworks.
+#### Back-End | Learning Content Pre-Process
 
-### Javascript
->Javascript - It is a programing language. they can be used both for the backend and frontend processes of mobile application development. We have used javascript to write code for both frontend and backend.
+---
 
-### Jest
->Jest - Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
-It works with projects using: Babel, TypeScript, Node, React, Angular, Vue. It can provide testing for frontend and backend
+Preprocess pdf article into plaintext using `pdf-parse`
+
+Parse the article using OpenAI API, get content interest tags
+
+Generate quiz in a JSON format using API
+
+Create databse entry, with content title, tags, filename (uuid) and quiz json.
+
+Upload the file (.pdf) onto supabse storage bucket.
+
+
+
+#### Front-End | Learning Content Retrieval
+
+---
+
+Parse personal statement using OpenAI API, get interest tags
+
+Store those tags into `user` database table
+
+Query content database using user interests tags, return file title & filename
+
+Query `getPublicUrl(fileName)` to get http link for download
+
+Download content & quiz
+
+
+
+#### Configuration
+
+---
+
+You should create `.env` file at project root to store the environemental variables.
+
+Format of the file should follows:
+
+````
+# DEBUG=1
+OPENAI_API_KEY=***
+SUPABASE_PROJECT=https://ticcscbvmncayhqsodsw.supabase.co
+SUPABASE_API_KEY=***
+````
+
+
+
+#### Something Useful
+
+---
+
+https://supabase.com/docs/reference/javascript/installing
